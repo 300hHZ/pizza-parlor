@@ -48,6 +48,7 @@ $(document).ready(function(){
     else if ($(this).attr("type") === "radio")
     {
       pizza.changeSize($(this).val());
+      $("#pizzaSize").text($(this).attr("id"));
     }
 
     if (pizza.getToppings().length === 0)
