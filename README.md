@@ -22,31 +22,31 @@ _Website that determines and displays the cost of a pizza based on a customer's 
 
 ### Specifications
 ```
-Describe: pizza()
-Test: Creates a new pizza object with no toppings and undetermined size
+Describe: Pizza()
+Test: Creates a new Pizza object with no toppings and undetermined size
 Expect: 
 
-Describe: pizza.addToppings(toppings)
+Describe: Pizza.addToppings(toppings)
 Test: Adds selected pizza topping(s) to the pizza object
 Expect: 
 
-Describe: pizza.removeToppings(toppings)
+Describe: Pizza.removeToppings(toppings)
 Test: Removes selected pizza topping(s) from the pizza object
 Expect:
 
-Describe: pizza.changeSize(size)
+Describe: Pizza.changeSize(size)
 Test: Changes the pizza size to the new selected size.
 Expect:
 
-Describe: pizza.getToppings()
+Describe: Pizza.getToppings()
 Test: Returns the pizza toppings selected by the user.
 Expect:
 
-Describe: pizza.getSize()
+Describe: Pizza.getSize()
 Test: Returns the size of the pizza, selected by the user.
 Expect:
 
-Describe: pizza.price(toppings,size)
+Describe: Pizza.price(toppings,size)
 Test: Determines the price of the pizza
 Expect:
 
