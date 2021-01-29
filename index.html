@@ -12,33 +12,50 @@
 
 <body>
   <div class="container">
-    <form>
-      <div class="form-group" id="toppings">
-        <p>Toppings (Each additional topping +$1):</p>
-        <input type="checkbox" name="toppings" value="Pepperoni">Pepperonis<br>
-        <input type="checkbox" name="toppings" value="Sausage">Sausages<br>
-        <input type="checkbox" name="toppings" value="Cheese">Extra Cheese<br>
-        <input type="checkbox" name="toppings" value="Mushroom">Mushrooms<br>
-        <input type="checkbox" name="toppings" value="Pineapple">Pineapples<br>
+    <div class="row">
+      <div class="col-6">
+        <form>
+          <div class="form-group" id="toppings">
+            <p>Toppings (Each additional topping +$1):</p>
+            <input type="checkbox" name="toppings" value="Cheese">Extra Cheese<br>
+            <input type="checkbox" name="toppings" value="Pepperoni">Pepperoni<br>
+            <input type="checkbox" name="toppings" value="Sausage">Sausages<br>
+            <input type="checkbox" name="toppings" value="Meatball">Meatball<br>
+            <input type="checkbox" name="toppings" value="BBQ Chicken">BBQ Chicken<br>
+            <input type="checkbox" name="toppings" value="Bacon">Bacon<br>
+            <input type="checkbox" name="toppings" value="Ham">Ham<br>
+            <input type="checkbox" name="toppings" value="Pineapple">Pineapples<br>
+            <input type="checkbox" name="toppings" value="Mushroom">Mushrooms<br>
+            <input type="checkbox" name="toppings" value="Red Onion">Red Onions<br>
+            <input type="checkbox" name="toppings" value="Olive">Olives<br>
+            <input type="checkbox" name="toppings" value="Green Pepper">Green Peppers<br>
+          </div>
+          <div class="form-group" id="size">
+            <p>Size:</p>
+            <div class="radio">
+              <label>
+                <input type="radio" name="size" value="S" id="Small" checked>Small ($5)
+              </label> 
+              <label>
+                <input type="radio" name="size" value="Med" id="Medium">Medium ($7)
+              </label> 
+              <label>
+                <input type="radio" name="size" value="Large" id="Large">Large ($9)
+              </label>
+            </div>
+          </div>
+          <div id="output">
+            <p>Your <span id="pizzaSize">Small </span> <span id="pizzaType">Bland</span> Pizza comes out to $<span id="cost">5</span>.</p>
+          </div>
+          <button type="submit" class="btn btn-dark">Order Pizza</button>
+        </form>
       </div>
-      <div class="form-group" id="size">
-        <p>Size:</p>
-        <div class="radio">
-          <label>
-            <input type="radio" name="size" value="S" id="Small" checked>Small ($5)
-          </label> 
-          <label>
-            <input type="radio" name="size" value="Med" id="Medium">Medium ($7)
-          </label> 
-          <label>
-            <input type="radio" name="size" value="Large" id="Large">Large ($9)
-          </label>
-        </div>
+      <div class="col-6">
+        Your Pizza Cart:
+        <ul>
+          
+        </ul> 
       </div>
-      <!-- <button type="submit" class="btn btn-dark">Order Pizza</button> -->
-    </form>
-    <div id="output">
-      <p>Your <span id="pizzaSize">Small </span> <span id="pizzaType">Bland</span> Pizza comes out to $<span id="cost">5</span>.</p>
     </div>
   </div>
 </body>

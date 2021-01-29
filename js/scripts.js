@@ -28,7 +28,7 @@ Pizza.prototype.getSize = function(){
 Pizza.prototype.price = function(toppings, size){
   let toppingPrice = toppings.length; // each additional topping is an extra dollar
   let sizePrice = size.length; // "S" for small = +$1, "Med" for medium = +$3, "Large" for large = +$5
-  return 5 + toppingPrice + sizePrice;
+  return 4 + toppingPrice + sizePrice;
 }
 
 // ------------User Interface Logic------------
