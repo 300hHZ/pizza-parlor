@@ -54,6 +54,12 @@ $(document).ready(function(){
     pizza.changeSize($(this).val());
     // console.log(pizza.getSize());
   });
+
+  $("form").submit(function(event)
+  {
+    event.preventDefault();
+    $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
+  })
 });
 
 //testing business logic
