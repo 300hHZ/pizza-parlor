@@ -34,26 +34,26 @@
             <p>Size:</p>
             <div class="radio">
               <label>
-                <input type="radio" name="size" value="S" id="Small" checked>Small ($5)
+                <input type="radio" name="size" value="S" id="Small" checked>Small ($5) 
               </label> 
               <label>
-                <input type="radio" name="size" value="Med" id="Medium">Medium ($7)
+                <input type="radio" name="size" value="Med" id="Medium">Medium ($7) 
               </label> 
               <label>
-                <input type="radio" name="size" value="Large" id="Large">Large ($9)
+                <input type="radio" name="size" value="Large" id="Large">Large ($9) 
               </label>
             </div>
           </div>
           <div id="output">
             <p>Your <span id="pizzaSize">Small </span> <span id="pizzaType">Bland</span> Pizza comes out to $<span id="cost">5</span>.</p>
           </div>
-          <button type="submit" class="btn btn-dark">Order Pizza</button>
+          <button class="btn btn-dark" id="save">Save Pizza Order</button>
         </form>
       </div>
       <div class="col-6">
         Your Pizza Cart:
-        <ul>
-          
+        <ul id = cart>
+
         </ul> 
       </div>
     </div>

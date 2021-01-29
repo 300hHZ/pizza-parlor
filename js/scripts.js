@@ -2,7 +2,7 @@
 
 function Pizza(){
   this.toppings = [];
-  this.size = "";
+  this.size = "Small";
 }
 
 Pizza.prototype.addTopping = function(newTopping){
@@ -32,12 +32,29 @@ Pizza.prototype.price = function(toppings, size){
 }
 
 // ------------User Interface Logic------------
-
+Pizza.prototype.toppingString = function(){
+  if (this.toppings.length === 0) {
+    return "Bland";
+  }
+  else {
+    let str = this.toppings[0];
+    for (let i = 1; i < this.toppings.length; i++) {
+      if (i < this.toppings.length - 1)
+        str += ", " + this.toppings[i];
+      else
+        str += " & " + this.toppings[i];
+    }
+  return str;
+  }
+}
 
 $(document).ready(function(){
+  let pizzaCart= [];
   let pizza = new Pizza();
+  let numPizzas = 1;
+  let totalCost = 0;
 
-  $("input").on("click", function(event) {
+  $("input").on("click", function() {
     if($(this).attr("type")==="checkbox")
     {
       if($(this).is(":checked"))
@@ -51,25 +68,38 @@ $(document).ready(function(){
       $("#pizzaSize").text($(this).attr("id"));
     }
 
-    if (pizza.getToppings().length === 0)
-    {
-      $("#pizzaType").text("Bland");
-    }
+    // if (pizza.getToppings().length === 0)
+    // {
+    //   $("#pizzaType").text("Bland");
+    // }
 
-    else{
-      let pizzaType = pizza.getToppings()[0];
-      for(let i = 1; i < pizza.getToppings().length; i++)
-      {
-        if(i < pizza.getToppings().length-1)
-          pizzaType += ", " + pizza.getToppings()[i];
-        else
-          pizzaType += " & " + pizza.getToppings()[i];
-      }
-      $("#pizzaType").text(pizzaType);
-    }
+    // else{
+    //   let pizzaType = pizza.getToppings()[0];
+    //   for(let i = 1; i < pizza.getToppings().length; i++)
+    //   {
+    //     if(i < pizza.getToppings().length-1)
+    //       pizzaType += ", " + pizza.getToppings()[i];
+    //     else
+    //       pizzaType += " & " + pizza.getToppings()[i];
+    //   }
+      $("#pizzaType").text(pizza.toppingString());
+    // }
     $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
   });
 
+  $("#save").on("click", function(event) {
+    event.preventDefault(); 
+    pizzaCart.push(pizza);
+
+    $("#cart").append("<li>1 " + pizza.getSize() + " " + pizza.toppingString() + 
+    // "<button class=\"btn btn-dark edit\">Edit</button></button>
+    " Pizza</li>");
+    $("input[type=\"checkbox\"]:checked").prop('checked', false);
+    pizza = new Pizza();
+    $("#pizzaSize").text("Small");
+    $("#pizzaType").text("Bland");
+    $("#cost").text("5");
+  });
 });
 
 //testing business logic
