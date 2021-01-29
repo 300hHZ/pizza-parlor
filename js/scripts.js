@@ -28,7 +28,7 @@ Pizza.prototype.getSize = function(){
 Pizza.prototype.price = function(toppings, size){
   let toppingPrice = toppings.length; // each additional topping is an extra dollar
   let sizePrice = size.length; // "S" for small = +$1, "Med" for medium = +$3, "Large" for large = +$5
-  return 4 + toppingPrice + sizePrice;
+  return 5 + toppingPrice + sizePrice;
 }
 
 // ------------User Interface Logic------------
@@ -36,28 +36,26 @@ Pizza.prototype.price = function(toppings, size){
 
 $(document).ready(function(){
   let pizza = new Pizza();
-  $("input[type='checkbox']").on("click",function(event){
-    // console.log($(this).val());
 
-    if($(this).is(":checked"))
-      pizza.addTopping($(this).val());
-    else
-      pizza.removeTopping($(this).val());
-    
-    // console.log(pizza.getToppings());
-    
+  $("input").on("click", function(event) {
+    if($(this).attr("type")==="checkbox")
+    {
+      if($(this).is(":checked"))
+        pizza.addTopping($(this).val());
+      else
+        pizza.removeTopping($(this).val());
+    }
+    else if ($(this).attr("type") === "radio")
+    {
+      pizza.changeSize($(this).val());
+    }
 
-  });
+    if (pizza.getToppings().length === 0)
+    {
+      $("#pizzaType").text("Bland");
+    }
 
-  $("input[type='radio']").on("click", function (event) {
-    // console.log($(this).val());
-    pizza.changeSize($(this).val());
-    // console.log(pizza.getSize());
-  });
-
-  $("form").submit(function(event)
-  {
-    event.preventDefault();
+    else{
       let pizzaType = pizza.getToppings()[0];
       for(let i = 1; i < pizza.getToppings().length; i++)
       {
@@ -67,9 +65,10 @@ $(document).ready(function(){
           pizzaType += " & " + pizza.getToppings()[i];
       }
       $("#pizzaType").text(pizzaType);
-      $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
+    }
+    $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
+  });
 
-  })
 });
 
 //testing business logic
