@@ -28,7 +28,7 @@ Pizza.prototype.getSize = function(){
 Pizza.prototype.price = function(toppings, size){
   let toppingPrice = toppings.length; // each additional topping is an extra dollar
   let sizePrice = size.length; // "S" for small = +$1, "Med" for medium = +$3, "Large" for large = +$5
-  return 5 + toppingPrice + sizePrice;
+  return 4 + toppingPrice + sizePrice;
 }
 
 // ------------User Interface Logic------------
@@ -58,7 +58,17 @@ $(document).ready(function(){
   $("form").submit(function(event)
   {
     event.preventDefault();
-    $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
+      let pizzaType = pizza.getToppings()[0];
+      for(let i = 1; i < pizza.getToppings().length; i++)
+      {
+        if(i < pizza.getToppings().length-1)
+          pizzaType += ", " + pizza.getToppings()[i];
+        else
+          pizzaType += " & " + pizza.getToppings()[i];
+      }
+      $("#pizzaType").text(pizzaType);
+      $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
+
   })
 });
 
