@@ -1,20 +1,16 @@
 // ---------------Business Logic---------------
 
 function Pizza(){
-  this.cost = 0;
   this.toppings = [];
   this.size = "";
 }
 
 Pizza.prototype.addTopping = function(newTopping){
-  // if(!(this.toppings.includes(newTopping)))
-    this.toppings.push(newTopping); //with checkboxes, don't need to worry if topping is already in array.
+    this.toppings.push(newTopping); 
 }
 
 Pizza.prototype.removeTopping = function(topping){
-  // const index = this.toppings.indexOf(topping);
-  // if (index != -1)
-    this.toppings.splice(this.toppings.indexOf(topping),1); // with checkboxes, don't need to worry about if topping isn't in array.
+  this.toppings.splice(this.toppings.indexOf(topping),1); 
 }
 
 Pizza.prototype.changeSize = function(newSize){
@@ -38,18 +34,35 @@ Pizza.prototype.price = function(toppings, size){
 // ------------User Interface Logic------------
 
 
-$(document).ready(function()){
+$(document).ready(function(){
   let pizza = new Pizza();
+  $("input[type='checkbox']").on("click",function(event){
+    // console.log($(this).val());
 
-}
+    if($(this).is(":checked"))
+      pizza.addTopping($(this).val());
+    else
+      pizza.removeTopping($(this).val());
+    
+    // console.log(pizza.getToppings());
+    
+
+  });
+
+  $("input[type='radio']").on("click", function (event) {
+    // console.log($(this).val());
+    pizza.changeSize($(this).val());
+    // console.log(pizza.getSize());
+  });
+});
 
 //testing business logic
-let pizza = new Pizza();
-console.log(pizza);
-console.log(pizza.getToppings());
-console.log(pizza.getSize());
-pizza.addTopping("pepperoni");
-pizza.changeSize("L");
-console.log(pizza.getToppings());
-console.log(pizza.getSize());
-console.log(pizza.price());
+// let pizza = new Pizza();
+// console.log(pizza);
+// console.log(pizza.getToppings());
+// console.log(pizza.getSize());
+// pizza.addTopping("pepperoni");
+// pizza.changeSize("L");
+// console.log(pizza.getToppings());
+// console.log(pizza.getSize());
+// console.log(pizza.price());
