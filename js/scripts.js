@@ -25,13 +25,16 @@ Pizza.prototype.getSize = function(){
   return this.size;
 }
 
-Pizza.prototype.price = function(toppings, size){
-  let toppingPrice = toppings.length; // each additional topping is an extra dollar
-  let sizePrice = size.length; // "S" for small = +$1, "Med" for medium = +$3, "Large" for large = +$5
-  return 4 + toppingPrice + sizePrice;
+Pizza.prototype.price = function(){
+  let toppingPrice = this.toppings.length; // each additional topping is an extra dollar
+  let sizePrice = 0;
+  if(this.size === "Medium")
+    sizePrice +=2;
+  else if(this.size === "Large")
+    sizePrice +=4;
+  return 5 + toppingPrice + sizePrice;
 }
 
-// ------------User Interface Logic------------
 Pizza.prototype.toppingString = function(){
   if (this.toppings.length === 0) {
     return "Bland";
@@ -47,6 +50,8 @@ Pizza.prototype.toppingString = function(){
   return str;
   }
 }
+
+// ------------User Interface Logic------------
 
 $(document).ready(function(){
   let pizzaCart= [];
@@ -65,25 +70,10 @@ $(document).ready(function(){
     else if ($(this).attr("type") === "radio")
     {
       pizza.changeSize($(this).val());
-      $("#pizzaSize").text($(this).attr("id"));
+      $("#pizzaSize").text($(this).val());
     }
 
-    // if (pizza.getToppings().length === 0)
-    // {
-    //   $("#pizzaType").text("Bland");
-    // }
-
-    // else{
-    //   let pizzaType = pizza.getToppings()[0];
-    //   for(let i = 1; i < pizza.getToppings().length; i++)
-    //   {
-    //     if(i < pizza.getToppings().length-1)
-    //       pizzaType += ", " + pizza.getToppings()[i];
-    //     else
-    //       pizzaType += " & " + pizza.getToppings()[i];
-    //   }
-      $("#pizzaType").text(pizza.toppingString());
-    // }
+    $("#pizzaType").text(pizza.toppingString());
     $("#cost").text(pizza.price(pizza.getToppings(),pizza.getSize()));
   });
 
@@ -92,23 +82,14 @@ $(document).ready(function(){
     pizzaCart.push(pizza);
 
     $("#cart").append("<li>1 " + pizza.getSize() + " " + pizza.toppingString() + 
-    // "<button class=\"btn btn-dark edit\">Edit</button></button>
-    " Pizza</li>");
+    " Pizza ($" + pizza.price() + ") <button class=\"btn btn-danger edit\">Delete</button>");
     $("input[type=\"checkbox\"]:checked").prop('checked', false);
-    pizza = new Pizza();
+    $("input#Small").prop("checked",true);
     $("#pizzaSize").text("Small");
     $("#pizzaType").text("Bland");
     $("#cost").text("5");
+    totalCost += pizza.price()
+    $("#total").text(totalCost);
+    pizza = new Pizza();
   });
 });
-
-//testing business logic
-// let pizza = new Pizza();
-// console.log(pizza);
-// console.log(pizza.getToppings());
-// console.log(pizza.getSize());
-// pizza.addTopping("pepperoni");
-// pizza.changeSize("L");
-// console.log(pizza.getToppings());
-// console.log(pizza.getSize());
-// console.log(pizza.price());
