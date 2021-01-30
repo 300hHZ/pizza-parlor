@@ -1,18 +1,20 @@
 # _Pizza Parlor_
 
-#### _A simple website to order a pizza_
+#### _A simple website to order pizzas_
 
 #### By _**Woo Jin Kim**_
 
 ## Technologies Used
 
-* _html_
-* _css_
-* _javascript_
+* _HTML_
+* _CSS_
+* _Javascript_
+* _jQuery_
+* _Bootstrap_
 
 ## Description
 
-_Website that determines and displays the cost of a pizza based on a customer's selection of toppings and size._
+_Website that determines and displays the cost of a pizza based on a customer's selection of toppings and size. User has the ability to save their Pizza customization and order multiple pizzas. The program will calculate and display the grand total of all pizzas._
 
 ## Setup/Installation Requirements
 
@@ -23,37 +25,45 @@ _Website that determines and displays the cost of a pizza based on a customer's 
 ### Specifications
 ```
 Describe: Pizza()
-Test: Creates a new Pizza object with no toppings and undetermined size
-Expect: 
+Test: Creates a new Pizza object with no toppings and default small size
+Code: let pizza = new Pizza();
+Expect(pizza.toEqual(Pizza{ [],"Small" }));
 
-Describe: Pizza.addToppings(toppings)
-Test: Adds selected pizza topping(s) to the pizza object
-Expect: 
-
-Describe: Pizza.removeToppings(toppings)
-Test: Removes selected pizza topping(s) from the pizza object
-Expect:
-
-Describe: Pizza.changeSize(size)
-Test: Changes the pizza size to the new selected size.
-Expect:
-
-Describe: Pizza.getToppings()
+Describe: Pizza.prototype.getToppings()
 Test: Returns the pizza toppings selected by the user.
-Expect:
+Code: pizza.getToppings();
+Expect(pizza.getToppings().toEqual([]));
 
-Describe: Pizza.getSize()
+Describe: Pizza.prototype.getSize()
 Test: Returns the size of the pizza, selected by the user.
-Expect:
+Code: pizza.getSize();
+Expect(pizza.getSize().toEqual("Small"));
 
-Describe: Pizza.price(toppings,size)
+Describe: Pizza.prototype.addToppings(toppings)
+Test: Adds selected pizza topping(s) to the pizza object
+Code: pizza.addToppings("Pepperoni");
+Expect(pizza.getToppings().toEqual(["Pepperoni"]));
+
+Describe: Pizza.prototype.removeToppings(toppings)
+Test: Removes selected pizza topping(s) from the pizza object
+Code: pizza.removeToppings("Pepperoni");
+Expect(pizza.getToppings().toEqual([]));
+
+Describe: Pizza.prototype.changeSize(size)
+Test: Changes the pizza size to the new selected size.
+Code: pizza.changeSize("Large");
+Expect(pizza.getSize().toEqual("Large"));
+
+Describe: Pizza.prototype.price()
 Test: Determines the price of the pizza
-Expect:
+Code: pizza.price();
+Expect(pizza.price().toEqual(9));
 
 ```
-## Known Bugs
+## Known Bugs/Room for Improvement
 
-* _TBD_
+* Code is not best practice, especially in the way that the script communicates with the DOM. Large room for refactoring.
+* Barely any CSS styling
 
 ## License
 
