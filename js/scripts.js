@@ -53,6 +53,7 @@ Pizza.prototype.toppingString = function(){
 
 // ------------User Interface Logic------------
 
+
 $(document).ready(function(){
   // attachContactListeners();
   let pizzaCart= [];
@@ -96,8 +97,17 @@ $(document).ready(function(){
     pizza = new Pizza();
   });
 
-  $("ul#cart").on("click", "button", function() {
-    console.log("FINALLY");
+  $("ul#cart").on("click", ".del", function() {
+    const deleteIndex = $(this).attr("id");
+    totalCost -= pizzaCart[deleteIndex].price();
+    $("#total").text(totalCost);
+    pizzaCart.splice(deleteIndex,1);
+    pizzaPos = 0;
+    $("#cart").empty();
+    pizzaCart.forEach(function(remainingPizza){
+      $("#cart").append("<li>1 " + remainingPizza.getSize() + " " + remainingPizza.toppingString() +
+        " Pizza ($" + remainingPizza.price() + ") <button class=\"btn btn-danger del\" id=\"" + pizzaPos++ + "\">Delete</button>");
+    });
   });
 
 });
