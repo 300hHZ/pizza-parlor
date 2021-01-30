@@ -14,13 +14,13 @@
 
 ## Description
 
-_Website that determines and displays the cost of a pizza based on a customer's selection of toppings and size. User has the ability to save their Pizza customization and order multiple pizzas. The program will calculate and display the grand total of all pizzas._
+_Website that determines and displays the cost of a pizza based on a customer's selection of toppings and size. User has the ability to save their Pizza customization and order multiple pizzas. User also has the ability to delete any of their saved Pizza orders, if they so wish. The program will calculate and display the grand total of all pizzas. _
 
 ## Setup/Installation Requirements
 
 * _Clone this repository to your desktop_
 * _Navigate to the top level of the directory_
-* _Open js/index.html_
+* _Open index.html_
 
 ### Specifications
 ```
@@ -64,6 +64,11 @@ Expect(pizza.price().toEqual(9));
 
 * Code is not best practice, especially in the way that the script communicates with the DOM. Large room for refactoring.
 * Barely any CSS styling
+
+## Stretch Goals
+
+* Add different screens (Welcome, Checkout, Confirmation, etc.)
+* Add ability to edit saved orders
 
 ## License
 
