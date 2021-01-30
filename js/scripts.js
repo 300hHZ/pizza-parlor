@@ -54,9 +54,10 @@ Pizza.prototype.toppingString = function(){
 // ------------User Interface Logic------------
 
 $(document).ready(function(){
+  // attachContactListeners();
   let pizzaCart= [];
   let pizza = new Pizza();
-  let numPizzas = 1;
+  let pizzaPos = 0;
   let totalCost = 0;
 
   $("input").on("click", function() {
@@ -82,14 +83,21 @@ $(document).ready(function(){
     pizzaCart.push(pizza);
 
     $("#cart").append("<li>1 " + pizza.getSize() + " " + pizza.toppingString() + 
-    " Pizza ($" + pizza.price() + ") <button class=\"btn btn-danger edit\">Delete</button>");
+      " Pizza ($" + pizza.price() + ") <button class=\"btn btn-danger del\" id=\"" + pizzaPos++ + "\">Delete</button>");
+
+    console.log($("#cart>li>button").attr("class"));
     $("input[type=\"checkbox\"]:checked").prop('checked', false);
     $("input#Small").prop("checked",true);
     $("#pizzaSize").text("Small");
     $("#pizzaType").text("Bland");
     $("#cost").text("5");
-    totalCost += pizza.price()
+    totalCost += pizza.price();
     $("#total").text(totalCost);
     pizza = new Pizza();
   });
+
+  $("ul#cart").on("click", "button", function() {
+    console.log("FINALLY");
+  });
+
 });

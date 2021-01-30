@@ -16,7 +16,7 @@
       <div class="col-6">
         <form>
           <div class="form-group" id="toppings">
-            <p>Toppings (Each additional topping +$1):</p>
+            <h4>Toppings (Each additional topping +$1):</h4>
             <input type="checkbox" name="toppings" value="Cheese">Extra Cheese<br>
             <input type="checkbox" name="toppings" value="Pepperoni">Pepperoni<br>
             <input type="checkbox" name="toppings" value="Sausage">Sausages<br>
@@ -31,7 +31,7 @@
             <input type="checkbox" name="toppings" value="Green Pepper">Green Peppers<br>
           </div>
           <div class="form-group" id="size">
-            <p>Size:</p>
+            <h4>Size:</h4>
             <div class="radio">
               <label>
                 <input type="radio" name="size" value="Small" id="Small" checked>Small ($5) 
@@ -44,16 +44,16 @@
               </label>
             </div>
           </div>
-          <div id="output">
-            <p>Your <span id="pizzaSize">Small </span> <span id="pizzaType">Bland</span> Pizza comes out to $<span id="cost">5</span>.</p>
+          <div id="currPrice">
+            <h5>This <span id="pizzaSize">Small </span> <span id="pizzaType">Bland</span> Pizza comes out to $<span id="cost">5</span>.</h5>
           </div>
           <button class="btn btn-dark" id="save">Save Pizza Order</button>
         </form>
       </div>
 
       <div class="col-6">
-        Your Pizza Cart:
-        <ul id = cart></ul>
+        <h3>Your Pizza Cart:</h3>
+        <ul id ="cart"></ul>
         <p>Total Price: $<span id="total">0</span></p>
       </div>
     </div>
